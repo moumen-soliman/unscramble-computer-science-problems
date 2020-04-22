@@ -18,20 +18,39 @@ also time spent on the phone.
 Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
-
 """
-timeonphone={}
-for call in calls:
-    if call[0] in timeonphone.keys():
-        timeonphone[call[0]]+=int(call[3])
-    else:
-        timeonphone[call[0]]=0
-    if call[1] in timeonphone.keys():
-        timeonphone[call[1]]+=int(call[3])
-    else:
-        timeonphone[call[1]]=0
+from collections import defaultdict
+import json
+
+# build dictionary or a map of key as calls and value as duration
+phone_dict = defaultdict(list)
+
+def phone_call_duration(calls):
+    
+    for call in calls:
+        phone1, phone2 = call[0], call[1]
+        duration = call[3]
+        
+        if phone_dict.keys() == phone1:
+            phone_dict[phone1] = [duration]
+        else:
+            phone_dict[phone1].append(duration)
+
+        if phone_dict.keys() == phone2:
+            phone_dict[phone2] = [duration]
+        else:
+            phone_dict[phone2].append(duration)
+            
+    # print(json.dumps(phone_dict, indent=1))
+
+phone_call_duration(calls)
 
 
-print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(max(timeonphone,key=timeonphone.get),
-                                                                                         timeonphone[max(timeonphone,key=timeonphone.get)]))
+# build another dictionary for total sum of value duration for each key           
+phone_duration = {}
+for key, value in phone_dict.items():
+    phone_duration[key] = sum(map(int, value))
 
+# get max value of values in new duration dictionary and print out key and value
+max_time = max(phone_duration, key=phone_duration.get)  
+print(max_time, 'spent the longest time,', phone_duration[max_time], 'seconds, on the phone during September 2016.')

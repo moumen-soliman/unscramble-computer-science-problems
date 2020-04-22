@@ -25,35 +25,24 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
-def printNumbersWhichCouldBeTelemarketers():
-    callers = set()
-    callReceivers = set()
-    textReceivers = set()
-    textSenders = set()
-
+def potential_telemarketers(calls, texts): 
+    qualified_telemarketers_set = set()
+    non_qualified_numbers_set = set()
+    
     for call in calls:
-        caller = call[0]
-        receiver = call[1]
-        callers.add(caller)
-        callReceivers.add(receiver)
-
+        outgoing_calls, incoming_calls = call[0], call[1] 
+        qualified_telemarketers_set.add(outgoing_calls)
+        non_qualified_numbers_set.add(incoming_calls)
+            
     for text in texts:
-        sender = text[0]
-        receiver = text[1]
-        textSenders.add(sender)
-        textReceivers.add(receiver)
+        outgoing_text, incoming_text = text[0], text[1] 
+        non_qualified_numbers_set.add(outgoing_text)
+        non_qualified_numbers_set.add(incoming_text)
+ 
+    difference = qualified_telemarketers_set - non_qualified_numbers_set  
+    result = sorted(difference)
 
-    callers = callers.difference(callReceivers)
-    callers = callers.difference(textReceivers)
-    callers = callers.difference(textSenders)
-
-    telemarketers = list(callers)
-
-    print("These numbers could be telemarketers: ")
-    telemarketers.sort()
-    for number in telemarketers:
-        print(number)
-
-
-printNumbersWhichCouldBeTelemarketers()
-
+    print("These numbers could be telemarketers: \n")
+    print('\n'.join(result))
+    
+potential_telemarketers(calls, texts)
