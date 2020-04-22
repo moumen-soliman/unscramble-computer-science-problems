@@ -1,0 +1,28 @@
+This file gives the Time complexity analysis of different Tasks in the project
+
+
+Task0.py
+
+--> O(1) , Since there is no search going in this problem. Searching first and last by index
+
+Task1.py
+
+-->O(N square), the for loops have complexity of N and set adding operation has further complexity of N. Therefore N square
+
+Task2.py
+--> O(N square), the for loop has complexity of N and further checking the dict keys has complexity of N. Therefore N square
+
+Task3.py
+-->O(N log N) +O(N Square). First is for running the loop on calls and searching '080' and second is running the loop on numbers and adding using set
+
+Task4.py
+-->O(5N) + O(N log N) + O(N square)
+: We iterate over array of text record of length n and hence the time complexity is O (N)
+  Inside this loop we are adding elements in the set which has a time complexity of O (N), we are doing this twice and hence the complexity is O(N + N)
+  the total time complexity in the first iteration is O(N square + N square) or O (N square)
+  We repeat the same process another time and hence the total time complexity is  O(N square + N square)
+  After this, we are using the difference method which has time complexity O(N), we are doing this 3 times and thus it is  O(3N)
+  Converting this set to list has a time complexity of O (N)
+  Sorting it has O(NlogN)
+  Iterating over the sorted list has O(N)
+  Thus total time complexity is O(5N) + O(N log N) + O(N square)
