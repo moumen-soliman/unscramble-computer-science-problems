@@ -1,34 +1,24 @@
-1. Task0:O(1)
+# Run time analysis
+This file explains the run time analysis (Worst Case Big O Notation) for each solution they produced. 
+Used https://www.bigocheatsheet.com/ as reference
 
-There are two read csv codes and two print statements in the codebase which does not depends on the input size so the 
-Time Complexity of the algorithm is constant So the Big O for worst case is : O(1)
+## Task0
+The Task0 runs in O(1), because we are directly accesing the first and last item (using -1 to directly get the last position) of an array.
+According to stackoverflow , because you need only the start position in memory , plus the array position.
 
-2. Task1:O(n)
 
-There are two read csv codes and one for loop which depends on the input size n which has been called 2 times so for loop
-complexity is O(2n) and the print statement. So the Overall Time Complexity for worst Case is O(n) 
+## Task1
+Set Access time is O(1), but we are also doing FORs , and this is O(n).
+While we are doing two fors (2 * O(n)), we remove the constant leaving O(n)
 
-3. Task2:O(n)
+## Task2
+Same as the previous tasks, we are only using 2 FORs and they are O(n) 
 
-There are two read csv codes and one for loop which depends on the input size n which has been called 1 times so for loop
-complexity is O(n) and the print statement. So the Overall Time Complexity for worst Case is O(n) 
+## Task3
+We are using FORs ( O(n)), array accesing ( O(1)) but we are also doing a sort, and according to the docs
+sort have O(nlogn) in the worst case.
+So, the complexity is O(nlogn) as that is the slowest one of all the complexity we have
 
-4. Task3:O(n^2)
-
-#readCSV the complexity is constant: O(1)
-#function GetFixedFromCalls complexity is : O(n^2)
-#function GetFixedToFixedCalls complexity is: O(n)
-#sorted() complexity is : O(nlogn)
-#print statements complexity is : O(1)
-
-#Overall Worst Case time complexity is: O(n^2)
-
-5. Task4:O(nlogn)
-
-#readCSV the complexity is constant: O(1)
-#function GetLists time complexity is: O(2n)
-#function IdentifyTeleMarketNos time complexity is : O(n)
-#sorted() complexity is : O(nlogn)
-#print statements complexity is : O(1)
-
-#Overall Worst Case time complexity is: O(nlogn)
+## Task4
+We are doing many FORs ((0(n))) but also doing a sort, and for the same reason as the previous task
+we are keeping the complexity of the sort , so 0(nlogn)
